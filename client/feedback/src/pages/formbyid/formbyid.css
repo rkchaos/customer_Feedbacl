@@ -1,0 +1,19 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh; /* Adjust height as needed */
+    padding: 20px;
+    text-align: center;
+  
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.react-form-generator {
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto;
+}
