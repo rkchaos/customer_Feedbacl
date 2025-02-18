@@ -20,10 +20,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use(cors({
-    origin: "*", 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    credentials: true, 
-}))
+    origin: "https://customer-feedbacl-iboy.vercel.app",
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}));
+
 // app.get("/raj",(req,res)=>{
 //     res.send("Welcome to the project")
 // })
