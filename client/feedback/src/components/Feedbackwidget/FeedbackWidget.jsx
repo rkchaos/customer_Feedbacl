@@ -11,7 +11,7 @@ const FeedbackWidget = ({ fromid }) => {
         function addScript() {
             if (!document.getElementById(scriptId)) {
                 const script = document.createElement("script");
-                script.src = `./feedback-widget.js?fromid=${fromid}`;
+                script.src = `https://customer-feedbacl-iboy.vercel.app/feedback-widget.js?fromid=${fromid}`;
                 script.async = true;
                 script.id = scriptId;
                 document.body.appendChild(script);
