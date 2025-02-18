@@ -49,7 +49,7 @@
     window.addEventListener("popstate", removeWidget);
 
     // Fetch feedbacks using POST request
-    fetch(`http://localhost:8080/GetFeedback/${fromid}`, {
+    fetch(`https://customer-feedbacl.onrender.com/GetFeedback/${fromid}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
