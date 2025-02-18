@@ -2,19 +2,26 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth"
+const apiKey=import.meta.env.VITE_APIKEY
+const authDomain=import.meta.env.VITE_AUTHDOMAIN
+const storageBucket=import.meta.env.VITE_STORAGEBUCKET
+const messageSenderid=import.meta.env.VITE_MESSAGESENDERID
+const appId=import.meta.env.VITE_APPID
+const measureMent=import.meta.env.VIRE_MEASUREMENTID
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAYDiYs-pNDuCTdYYB2ZA76IYqRs1wQLNQ",
-  authDomain: "auth-dcfaa.firebaseapp.com",
+  apiKey: apiKey,
+  authDomain: authDomain,
   projectId: "auth-dcfaa",
-  storageBucket: "auth-dcfaa.firebasestorage.app",
-  messagingSenderId: "348131138024",
-  appId: "1:348131138024:web:429aec419b1c9eb6b2ec5d",
-  measurementId: "G-WYX4QEQTCQ"
+  storageBucket:storageBucket ,
+  messagingSenderId: messageSenderid,
+  appId: appId,
+  measurementId: measureMent
 };
 
 // Initialize Firebase

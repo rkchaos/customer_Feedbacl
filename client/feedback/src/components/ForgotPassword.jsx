@@ -8,28 +8,32 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ForgotPassword({ open, handleClose }) {
-    let [email, setEmail] = useState({ email: '' })
-    let naviagte = useNavigate()
+    let [email, setEmail] = useState('')
+    // let naviagte = useNavigate()
     const handleForgetpassword = async () => {
-        try {
-            let res = await axios.post("http://localhost:8080/forgetPassword", email)
-            if (res.data.msg == 'Password reset email sent successfully') {
-                toast.success('Password reset link send successfully please check email and login again')
-            }
-            else {
-                toast.error('error in forgot password')
-            }
+        const auth = getAuth();
+        // console.log("Auth Object:", auth); 
+
+        if (!email.trim()) {
+            toast.error("Please enter a valid email!");
+            return;
         }
-        catch (err) {
-            console.log(err)
-        }
-    }
+
+        sendPasswordResetEmail(auth, email.trim()) 
+            .then(() => {
+                toast.success("Password reset link sent to your email");
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                toast.error(error.message);
+            });
+    };
     return (
         <>
             <Dialog
@@ -62,7 +66,7 @@ function ForgotPassword({ open, handleClose }) {
                         placeholder="Email address"
                         type="email"
                         fullWidth
-                        onChange={e => setEmail({ ...email, email: e.target.value })}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </DialogContent>
                 <DialogActions sx={{ pb: 3, px: 3 }}>

@@ -12,7 +12,6 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -87,7 +86,7 @@ export default function Navbar() {
   const handlelogout = async () => {
   try {
        await signOut(auth)
-       localStorage.removeItem("token")
+      //  localStorage.removeItem("token")
        toast.success("Signed out successfully")
        navigate("/")
      } catch (error) {

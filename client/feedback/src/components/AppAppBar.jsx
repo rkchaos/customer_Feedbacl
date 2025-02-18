@@ -58,7 +58,7 @@ export default function AppAppBar() {
   const handleSignout = async () => {
     try {
       await signOut(auth)
-      localStorage.removeItem("token")
+      // localStorage.removeItem("token")
       toast.success("Signed out successfully")
       navigate("/")
     } catch (error) {

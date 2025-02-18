@@ -65,7 +65,7 @@ function App() {
         try {
           if (!currentuid) return;
           const data = { uid: currentuid };
-          const res = await axios.post("http://localhost:8080/currentUser", data);
+          const res = await axios.post("https://customer-feedbacl.vercel.app/currentUser", data);
           setCurrentid(res.data.fetchuid._id);
         } catch (err) {
           console.log(err);
@@ -107,7 +107,7 @@ function App() {
             console.log("Form data:", formData)
             console.log(changeInput.name)
             const res = await axios.post(
-                `http://localhost:8080/createForm/${params.id}`,
+                `https://customer-feedbacl.vercel.app/createForm/${params.id}`,
                 { currentid, data: formData ,name:changeInput.name}
             )
             if (res.data.msg === "created success") {

@@ -7,12 +7,10 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';;
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { deepOrange, green } from '@mui/material/colors';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -49,7 +47,6 @@ function Alreadycreatedform() {
     ]
 
     const auth = getAuth();
-    // Listen for auth state changes
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -67,7 +64,7 @@ function Alreadycreatedform() {
         try {
             if (!currentuid) return;
             const data = { uid: currentuid };
-            const res = await axios.post("http://localhost:8080/currentUser", data);
+            const res = await axios.post("https://customer-feedbacl.vercel.app/currentUser", data);
             setCurrentid(res.data.fetchuid._id);
         } catch (err) {
             console.log(err);
@@ -90,7 +87,7 @@ function Alreadycreatedform() {
                     workspaceid: workspaceId,
                 };
 
-                let res = await axios.post('http://localhost:8080/alreadyCreatedForm', data);
+                let res = await axios.post('https://customer-feedbacl.vercel.app/alreadyCreatedForm', data);
                 setFormFetchData(res.data.workspace)
               
 
@@ -149,7 +146,7 @@ function Alreadycreatedform() {
     };
     const handledeleteForm = useCallback(async () => {
         if (!currentid) return;
-        let res = await axios.delete(`http://localhost:8080/form/delete/${selectedFormId}`, {
+        let res = await axios.delete(`https://customer-feedbacl.vercel.app/form/delete/${selectedFormId}`, {
             params: { ownerId: currentid }
         })
         if (res.data) {
