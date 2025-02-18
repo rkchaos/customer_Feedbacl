@@ -59,7 +59,7 @@ function Feedback() {
         try {
             if (!currentuid) return;
             const data = { uid: currentuid };
-            const res = await axios.post("https://customer-feedbacl.vercel.app/currentUser", data);
+            const res = await axios.post("https://customer-feedbacl.onrender.com/currentUser", data);
             setCurrentid(res.data.fetchuid._id);
         } catch (err) {
 
@@ -76,7 +76,7 @@ function Feedback() {
         if (!fromid) return;  // Prevent API call if `fromid` is not set
         async function fetchData() {
             try {
-                let res = await axios.post(`https://customer-feedbacl.vercel.app/GetFeedback/${fromid}`);
+                let res = await axios.post(`https://customer-feedbacl.onrender.com/GetFeedback/${fromid}`);
                 setFormvalue(res.data.form || []);
 
             } catch (err) {
@@ -100,7 +100,7 @@ function Feedback() {
             try {
                 let id = fromid
                 const res = await axios.post(
-                    `https://customer-feedbacl.vercel.app/form/${id}`,
+                    `https://customer-feedbacl.onrender.com/form/${id}`,
                     { currentid }
                 )
                 setFormData(res.data.findfrom)

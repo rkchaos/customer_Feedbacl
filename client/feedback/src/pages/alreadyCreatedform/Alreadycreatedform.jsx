@@ -64,7 +64,7 @@ function Alreadycreatedform() {
         try {
             if (!currentuid) return;
             const data = { uid: currentuid };
-            const res = await axios.post("https://customer-feedbacl.vercel.app/currentUser", data);
+            const res = await axios.post("https://customer-feedbacl.onrender.com/currentUser", data);
             setCurrentid(res.data.fetchuid._id);
         } catch (err) {
             console.log(err);
@@ -87,7 +87,7 @@ function Alreadycreatedform() {
                     workspaceid: workspaceId,
                 };
 
-                let res = await axios.post('https://customer-feedbacl.vercel.app/alreadyCreatedForm', data);
+                let res = await axios.post('https://customer-feedbacl.onrender.com/alreadyCreatedForm', data);
                 setFormFetchData(res.data.workspace)
               
 
@@ -146,7 +146,7 @@ function Alreadycreatedform() {
     };
     const handledeleteForm = useCallback(async () => {
         if (!currentid) return;
-        let res = await axios.delete(`https://customer-feedbacl.vercel.app/form/delete/${selectedFormId}`, {
+        let res = await axios.delete(`https://customer-feedbacl.onrender.com/form/delete/${selectedFormId}`, {
             params: { ownerId: currentid }
         })
         if (res.data) {

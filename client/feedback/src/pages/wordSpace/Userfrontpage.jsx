@@ -145,7 +145,7 @@ function Userfrontpage() {
         company: formData.companyName,
         ownerId: currentid,
       };
-      const response = await axios.post("https://customer-feedbacl.vercel.app/createWorkspace", allfromdata);
+      const response = await axios.post("https://customer-feedbacl.onrender.com/createWorkspace", allfromdata);
       if (response) {
         // Consider updating state instead of reloading the page
         location.reload();
@@ -176,7 +176,7 @@ function Userfrontpage() {
         company: updateFormData.companyName,
       };
       const toastId = toast.loading("Updating workspace...");
-      const response = await axios.put(`https://customer-feedbacl.vercel.app/updateWorkspace/${currentWorkspaceId}`, updatedData);
+      const response = await axios.put(`https://customer-feedbacl.onrender.com/updateWorkspace/${currentWorkspaceId}`, updatedData);
 
       if (response.data.msg === "Updated successfully") {
         toast.dismiss(toastId);
@@ -205,7 +205,7 @@ function Userfrontpage() {
       // console.log(currentWorkspaceId)
       try {
         const toastId = toast.loading("Deleting workspace...");
-        const response = await axios.delete(`https://customer-feedbacl.vercel.app/deleteWorkspace/${currentWorkspaceId}`);
+        const response = await axios.delete(`https://customer-feedbacl.onrender.com/deleteWorkspace/${currentWorkspaceId}`);
 
         if (response.data.success) {
           toast.dismiss(toastId);
@@ -286,7 +286,7 @@ function Userfrontpage() {
     try {
       if (!currentuid) return;
       const data = { uid: currentuid };
-      const res = await axios.post("https://customer-feedbacl.vercel.app/currentUser", data);
+      const res = await axios.post("https://customer-feedbacl.onrender.com/currentUser", data);
       setCurrentid(res.data.fetchuid._id);
       if(res.data){
         setIsLoading(false)
@@ -308,7 +308,7 @@ function Userfrontpage() {
       try {
         if (!currentid) return;
         const datas = { ownerId: currentid };
-        const res = await axios.post("https://customer-feedbacl.vercel.app/particularWorkspace", datas);
+        const res = await axios.post("https://customer-feedbacl.onrender.com/particularWorkspace", datas);
         setParticularWorkspace(res.data.particularUser);
 
         if(res.data){

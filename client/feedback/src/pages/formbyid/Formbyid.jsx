@@ -39,7 +39,7 @@ function Formbyid() {
         try {
             if (!currentuid) return;
             const data = { uid: currentuid };
-            const res = await axios.post("https://customer-feedbacl.vercel.app/currentUser", data);
+            const res = await axios.post("https://customer-feedbacl.onrender.com/currentUser", data);
             setCurrentid(res.data.fetchuid._id);
         } catch (err) {
           console.log(err)
@@ -58,7 +58,7 @@ function Formbyid() {
             setError(null)
             try {
                 const res = await axios.post(
-                    `https://customer-feedbacl.vercel.app/form/${params.id}`,
+                    `https://customer-feedbacl.onrender.com/form/${params.id}`,
                     { currentid }
                 )
                 console.log(res.data)
@@ -110,7 +110,7 @@ function Formbyid() {
                 ownerId: currentid
             }
 
-            let res = await axios.put(`https://customer-feedbacl.vercel.app/form/update/${params.id}`, data)
+            let res = await axios.put(`https://customer-feedbacl.onrender.com/form/update/${params.id}`, data)
                 .then((res) => {
                     
                     toast.success("updated successfully", {
@@ -200,7 +200,7 @@ function Formbyid() {
         }
 
         try {
-            let res = await axios.post('https://customer-feedbacl.vercel.app/feedback/Store', data)
+            let res = await axios.post('https://customer-feedbacl.onrender.com/feedback/Store', data)
             if (res.data) {
                 toast.success("Feedback submited", {
                     position: "top-right",

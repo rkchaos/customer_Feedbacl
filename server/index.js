@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use(cors({
-    origin: "https://customer-feedbacl-iboy.vercel.app",
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));

@@ -173,7 +173,7 @@ function Signup(props) {
         if(!data.email && !data.name && !data.userId){
           return
         }
-        let res = await axios.post("https://customer-feedbacl.vercel.app/storeUser", data)
+        let res = await axios.post("https://customer-feedbacl.onrender.com/storeUser", data)
         console.log(res)
       }
       catch (err) {
