@@ -9,6 +9,7 @@ import Createpage from './pages/createFrom/Createpage';
 import Alreadycreatedform from './pages/alreadyCreatedform/Alreadycreatedform';
 import Formbyid from './pages/formbyid/Formbyid';
 import Feedback from './pages/feedback/Feedback';
+import Instruction from './pages/instruction/Instruction';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
        <Route path='/alreadyCreated' element={<Alreadycreatedform/>} />
        <Route path='/form/:id' element={<Formbyid/>}/>
        <Route path='/feedback' element={<Feedback/>}/>
+       <Route path='/instruction' element={<Instruction/>}/>
       </Routes>
     </>
   )

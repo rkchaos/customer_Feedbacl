@@ -16,6 +16,7 @@
     "@mui/icons-material": "^6.4.1",
     "@mui/material": "^6.4.1",
     "@mui/styled-engine-sc": "^6.4.0",
+    "@tailwindcss/vite": "^4.0.7",
     "@toolpad/core": "^0.12.0",
     "axios": "^1.7.9",
     "bootstrap": "^3.4.1",
@@ -25,6 +26,7 @@
     "formik": "^2.4.6",
     "global": "^4.4.0",
     "jquery": "^3.7.1",
+    "lucide-react": "^0.475.0",
     "puppeteer": "^24.1.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.8",
@@ -36,6 +38,7 @@
     "react-toastify": "^11.0.3",
     "recharts": "^2.15.0",
     "styled-components": "^6.1.14",
+    "tailwindcss": "^4.0.7",
     "yup": "^1.6.1"
   },
   "devDependencies": {

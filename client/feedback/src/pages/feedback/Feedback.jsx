@@ -4,12 +4,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/nav/Navbar';
 import axios from 'axios';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { CircularProgress, Box, Container } from "@mui/material"
 import { Modal, Backdrop, Fade } from "@mui/material"
+import Alert from '@mui/material/Alert';
 import { ReactFormGenerator, ReactFormBuilder } from "react-form-builder2"
 import "react-form-builder2/dist/app.css"
 
@@ -28,7 +29,7 @@ const style = {
 };
 function Feedback() {
     let location = useLocation()
-    // console.log(location)
+    console.log(location)
     let { fromid } = location.state || {}
     // console.log(fromid)
     let [formvalue, setFormvalue] = useState([])
@@ -95,7 +96,7 @@ function Feedback() {
     useEffect(() => {
         async function fetchForm() {
             if (!currentid) return
-            if(!fromid) return
+            if (!fromid) return
             setIsLoading(true)
             try {
                 let id = fromid
@@ -113,7 +114,7 @@ function Feedback() {
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 2000);
-            }   
+            }
         }
         fetchForm()
     }, [fromid, currentid])
@@ -142,13 +143,16 @@ function Feedback() {
             </>
         )
     }
-
+    // instruction
+    function handlenaviagte(){
+        navigate("/instruction",{state:{formid:fromid}})
+    }
     return (
         <div>
             <Navbar />
             <div>
                 <div style={{ textAlign: "center", margin: "1rem 0" }}>
-                    <h1>Feedback</h1>
+                    <h1>Feedback <span style={{ float: 'right' }}> <Alert onClick={handlenaviagte} severity="error" sx={{ width: "400px" }}>Click me to embedded the feedback in your Webpage</Alert></span></h1>
                 </div>
 
             </div>
@@ -156,71 +160,71 @@ function Feedback() {
                 {
                     formvalue.map((item, index) => {
                         return (
-                        <>
-                        
-                        {
-                            formvalue.length>0?(
-                                <Card sx={{ width: '400px', marginTop: "10px", gap: "30px" }} key={item._id || index}>
-                                <CardContent>
-                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                                        Customer feedback
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        well meaning and kindly.
-                                        <br />
-                                        {'"a benevolent smile"'}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button onClick={handleOpen} size="small">Click me</Button>
-                                    <Modal
-                                        aria-labelledby="transition-modal-title"
-                                        aria-describedby="transition-modal-description"
-                                        open={open}
-                                        onClose={handleClose}
-                                        closeAfterTransition
-                                        slots={{ backdrop: Backdrop }}
-                                        slotProps={{
-                                            backdrop: {
-                                                timeout: 500,
-                                            },
-                                        }}
-                                    >
-                                        <Fade in={open}>
-                                            <Box sx={style}>
-                                                <Typography id="transition-modal-title" variant="h6" component="h2">
-                                                    <ReactFormGenerator
-                                                        data={formfields}
-                                                        submitButton={
-                                                            <Button sx={{display:'none'}} type="submit" variant="contained" color="primary">
-                                                                Submit
-                                                            </Button>
+                            <>
 
-                                                            
-                                                        }
-                                                        answer_data={item.data || []} 
-                                                        read_only:true
-
-
-                                                    />
+                                {
+                                    formvalue.length > 0 ? (
+                                        <Card sx={{ width: '400px', marginTop: "10px", gap: "30px" }} key={item._id || index}>
+                                            <CardContent>
+                                                <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+                                                    Customer feedback
                                                 </Typography>
+                                                <Typography variant="body2">
+                                                    well meaning and kindly.
+                                                    <br />
+                                                    {'"a benevolent smile"'}
+                                                </Typography>
+                                            </CardContent>
+                                            <CardActions>
+                                                <Button onClick={handleOpen} size="small">Click me</Button>
+                                                <Modal
+                                                    aria-labelledby="transition-modal-title"
+                                                    aria-describedby="transition-modal-description"
+                                                    open={open}
+                                                    onClose={handleClose}
+                                                    closeAfterTransition
+                                                    slots={{ backdrop: Backdrop }}
+                                                    slotProps={{
+                                                        backdrop: {
+                                                            timeout: 500,
+                                                        },
+                                                    }}
+                                                >
+                                                    <Fade in={open}>
+                                                        <Box sx={style}>
+                                                            <Typography id="transition-modal-title" variant="h6" component="h2">
+                                                                <ReactFormGenerator
+                                                                    data={formfields}
+                                                                    submitButton={
+                                                                        <Button sx={{ display: 'none' }} type="submit" variant="contained" color="primary">
+                                                                            Submit
+                                                                        </Button>
 
-                                            </Box>
-                                        </Fade>
-                                    </Modal>
-                                </CardActions>
-                            </Card>
-                            ):(
-                                <>
-                                  <div style={{ textAlign: "center", margin: "1rem 0" }}>
-                    <h1>No feedback found</h1>
-                </div>
-                                </>
-                            )
-                        }
-                        
-                        
-                        </>
+
+                                                                    }
+                                                                    answer_data={item.data || []}
+                                                                    read_only:true
+
+
+                                                                />
+                                                            </Typography>
+
+                                                        </Box>
+                                                    </Fade>
+                                                </Modal>
+                                            </CardActions>
+                                        </Card>
+                                    ) : (
+                                        <>
+                                            <div style={{ textAlign: "center", margin: "1rem 0" }}>
+                                                <h1>No feedback found</h1>
+                                            </div>
+                                        </>
+                                    )
+                                }
+
+
+                            </>
                         )
                     })
                 }

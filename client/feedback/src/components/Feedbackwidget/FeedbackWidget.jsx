@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const FeedbackWidget = ({ fromid }) => {
     const location = useLocation();
-
+console.log(fromid)
     useEffect(() => {
         const scriptId = "feedback-widget-script";
         const widgetId = "feedback-widget";
@@ -11,11 +11,11 @@ const FeedbackWidget = ({ fromid }) => {
         function addScript() {
             if (!document.getElementById(scriptId)) {
                 const script = document.createElement("script");
-                script.src = `https://customer-feedbacl-iboy.vercel.app/feedback-widget.js?fromid=${fromid}`;
+                script.src = `./feedback-widget.js?fromid=${fromid}`;
                 script.async = true;
                 script.id = scriptId;
                 document.body.appendChild(script);
-                console.log("Script added!");
+                // console.log("Script added!");
             }
         }
 
@@ -23,7 +23,7 @@ const FeedbackWidget = ({ fromid }) => {
             const widget = document.getElementById(widgetId);
             if (widget) {
                 widget.remove();
-                console.log("Widget removed!");
+                // console.log("Widget removed!");
             }
         }
 
@@ -33,7 +33,7 @@ const FeedbackWidget = ({ fromid }) => {
             removeWidget();
         }
 
-        if (location.pathname === "/workspace") {
+        if (location.pathname === "/feed") {
             addScript();
         } else {
             removeScript();
