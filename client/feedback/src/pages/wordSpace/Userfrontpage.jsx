@@ -130,7 +130,7 @@ function Userfrontpage() {
 
   // Retrieve auth headers from local storage
 
-  const fromid = "67b356cf994ac6b7d98be238";
+  // const fromid = "67b356cf994ac6b7d98be238";
   // Handle form submission for creating a workspace
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -366,7 +366,7 @@ function Userfrontpage() {
   return (
     <>
       <Navbar />
-      <FeedbackWidget  fromid={fromid}/>
+      {/* <FeedbackWidget  fromid={fromid}/> */}
       <div style={{ textAlign: "center", margin: "1rem 0" }}>
         <h1>Workspace</h1>
       </div>
