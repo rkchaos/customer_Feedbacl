@@ -46,5 +46,14 @@ These challenges lead to **missed opportunities** for improvement, customer rete
 
 1. **Clone the repository:**  
    ```bash
-   git clone https://github.com/your-username/GetFeedback.git
-   cd GetFeedback
+   https://github.com/rkchaos/customer_Feedbacl.git
+   
+
+2. **Install dependencies:**  
+   ```bash
+   npm install
+   
+2. **Start development server:**  
+   ```bash
+   npm start
+   
